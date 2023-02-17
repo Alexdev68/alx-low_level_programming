@@ -9,11 +9,13 @@ int main(void)
 {
 	int x = '`';
 
-	while (x <= 'z')
+	while (x <= 'y')
 	{
 		x++;
 
 		putchar(x);
 	}
+
+	putchar('\n');
 	return (0);
 }
