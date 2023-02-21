@@ -10,6 +10,7 @@ int _abs(int c)
 	if (c < 0)
 	{
 		int abs_call = c * -1;
+
 		return (abs_call);
 	}
 	return (c);
