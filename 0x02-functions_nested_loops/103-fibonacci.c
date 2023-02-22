@@ -7,19 +7,18 @@
 int main(void)
 {
 	int p = 0;
+	int v1 = 1, v2 = 0, sum = 0;
 
-	long v1 = 1, v2 = 2, sum = v2;
-
-	while (v1 + v2 < 4000000)
+	while (v2 < 4000000)
 	{
-		v2 += v1;
+		v2 = p + v1;
+		p = v1;
+		v1 = v2;
 		if (v2 % 2 == 0)
 		{
 			sum += v2;
-			v1 = v2 - v1;
-			++p;
 		}
 	}
-	printf("%ld\n", sum);
+	printf("%d\n", sum);
 	return (0);
 }
