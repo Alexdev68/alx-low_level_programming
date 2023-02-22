@@ -6,22 +6,26 @@
  */
 int main(void)
 {
-	int p, q;
+	int p;
 
-	int v1 = 0, v2 = 1;
+	long v1 = 1, v2 = 2;
 
-	int nextvalue = v1 + v2;
-
-	q = 50;
-
-	printf("Fibonacci number: %d, %d, ", v1, v2);
-
-	for (p = 3; p <= q; p++)
+	for (p = 0; p <= 50; p++)
 	{
-		printf("%d, ", nextvalue);
-		v1 = v2;
-		v2 = nextvalue;
-		nextvalue = v1 + v2;
+		if (p == 0)
+		{
+			printf("%ld", v1);
+		}
+		else if (p == 1)
+		{
+			printf(", %ld", v2);
+		}
+		else
+		{
+			v2 += v1;
+			v1 = v2 - v1;
+			printf(", %ld", v2);
+		}
 	}
 	putchar('\n');
 	return (0);
