@@ -6,19 +6,20 @@
  */
 int main(void)
 {
-	int p;
+	int p = 0;
 
-	int v1 = 1, v2 = 2, sum = v2;
+	long v1 = 1, v2 = 2, sum = v2;
 
-	for (p = 0; v1 + v2 < 4000000; p++)
+	while (v1 + v2 < 4000000)
 	{
 		v2 += v1;
 		if (v2 % 2 == 0)
 		{
 			sum += v2;
 			v1 = v2 - v1;
+			++p;
 		}
 	}
-	printf("%d\n", sum);
+	printf("%ld\n", sum);
 	return (0);
 }
