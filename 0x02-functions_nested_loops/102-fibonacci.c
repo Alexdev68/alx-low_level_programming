@@ -10,7 +10,7 @@ int main(void)
 
 	long v1 = 1, v2 = 2;
 
-	for (p = 0; p <= 50; p++)
+	for (p = 0; p < 50; p++)
 	{
 		if (p == 0)
 		{
