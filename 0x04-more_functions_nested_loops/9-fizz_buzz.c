@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdio.h>
 
 /**
@@ -6,9 +7,9 @@
  */
 int main(void)
 {
-	int a, b = 100;
+	int a;
 
-	for (a = 1; a <= b; a++)
+	for (a = 1; a <= 100; a++)
 	{
 		if (a % 3 == 0)
 		{
