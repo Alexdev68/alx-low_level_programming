@@ -20,7 +20,7 @@ int main(void)
 		}
 		if (a % 3 != 0 && a % 5 != 0)
 		{
-			printf("%d", a);	
+			printf("%d", a);
 		}
 		putchar(' ');
 	}
