@@ -10,7 +10,7 @@ int main(void)
 
 	unsigned long v1 = 1, v2 = 2;
 
-	(p = 0; p < 98; p++)
+	for (p = 0; p < 98; p++)
 	{
 		if (p == 0)
 		{
