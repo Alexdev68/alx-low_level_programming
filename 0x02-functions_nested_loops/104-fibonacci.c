@@ -8,23 +8,23 @@ int main(void)
 {
 	int p;
 
-	long long v1 = 1, v2 = 2;
+	unsigned long v1 = 1, v2 = 2;
 
-	for (p = 0; p < 98; p++)
+	(p = 0; p < 98; p++)
 	{
 		if (p == 0)
 		{
-			printf("%ld", v1);
+			printf("%lu", v1);
 		}
 		else if (p == 1)
 		{
-			printf(", %ld", v2);
+			printf(", %lu", v2);
 		}
 		else
 		{
 			v2 += v1;
 			v1 = v2 - v1;
-			printf(", %ld", v2);
+			printf(", %lu", v2);
 		}
 	}
 	putchar('\n');
