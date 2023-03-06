@@ -10,7 +10,8 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-	if (s == NULL) return (NULL);
+	if (s == NULL) 
+		return (NULL);
 
 	while (n > 0)
 	{
