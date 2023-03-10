@@ -26,6 +26,11 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
+/**
+ * _isdigit - This checks if every character in a string for digit
+ * @s: String
+ * Return: This returns 1 if digit or 0 if not
+ */
 int _isdigit(char *s)
 {
 	while (*s != '\0')
