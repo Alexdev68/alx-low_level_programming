@@ -3,41 +3,49 @@
 #include <stdio.h>
 
 /**
- *
- *
- *
- *
+ * **alloc_grid - This returns a pointer to a two dimentional array of integers
+ * @width: This represents the rows
+ * @height: This represents the columns
+ * Return: Pointer
  */
 int **alloc_grid(int width, int height)
 {
-	int h, w, a, b;
-	char *dim;
+	int a, b;
+	int **dim;
 
-	h = height;
-	w = width;
+	if ((height || width) < 1)
+	{
+		return (NULL);
+	}
 
-	dim = malloc(sizeof(char) * (h * w));
+	dim = (int**) malloc(sizeof(int*) * height);
 	if (dim == NULL)
 	{
 		return (NULL);
 	}
 
-	if (w || h < 1)
+	for (a = 0; a < height; a++)
 	{
-		return (NULL);
-	}
-
-	for (a = 0; a < h * w; a++)
-	{
-		dim[a] = 0;
-	}
-
-	for (a = 0; a < h; a++)
-	{
-		for (b = 0; b < w; b++)
+		dim[a] = (int*) malloc(sizeof(int) * width);
+		if (dim[a] == NULL)
 		{
-			printf("%d ", dim[a * b]);
+			free(dim);
+			for (b = 0; b <= a; a++)
+			{
+				free(dim[a]);
+			}
+
+				return (NULL);
 		}
 	}
-	return (0);
+
+	for (a = 0; a < height; a++)
+	{
+		for (b = 0; b < width; b++)
+		{
+			dim[a][b] = 0;
+		}
+	}
+
+	return (dim);
 }
