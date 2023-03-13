@@ -23,7 +23,7 @@ char *argstostr(int ac, char **av)
 		{
 			len++;
 		}
-		
+
 		len++;
 	}
 
@@ -46,6 +46,6 @@ char *argstostr(int ac, char **av)
 		str[c] = '\n';
 		c++;
 	}
-	
+
 	return (str);
 }
