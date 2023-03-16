@@ -12,18 +12,19 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *str;
-	int len = strlen(s1);
-	unsigned int len_2 = strlen(s2);
 	char *new_loc;
-	unsigned int i = 0, j = 0;
+	unsigned int i = 0, j = 0, len_2 = strlen(s2), len = strlen(s1);
 
 	if (s1 == NULL)
 		s1 = "";
+
 	if (s2 == NULL)
 		s2 = "";
+
 	if (n < len_2)
 		str = (char *) malloc(sizeof(char) * (len + n + 1));
-	else
+
+	else if (n >= len_2)
 		str = (char *) malloc(sizeof(char) * (len + len_2 + 1));
 
 	if (str == NULL)
