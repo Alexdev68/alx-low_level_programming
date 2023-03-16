@@ -14,6 +14,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	char *str;
 	int len = strlen(s1);
 	int len_s2 = strlen(s2) - n;
+	unsigned int len_2 = strlen(s2);
 	char *new_loc;
 
 	if (s1 == NULL)
@@ -33,11 +34,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 	}
 
-	/*
-	if (n >= len_s2)
+	
+	if (n >= len_2)
 	{
 		return (s2);
-	}*/
+	}
 
 	new_loc = str;
 
