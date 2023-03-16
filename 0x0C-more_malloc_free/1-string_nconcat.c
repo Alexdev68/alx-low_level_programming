@@ -12,12 +12,14 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *str;
-	unsigned int i, k, len_2 = 0, len;
+	unsigned int i, k, len_2 = 0, len = 0;
 
+	for (i = 0; s1[i] != '\0'; i++)
+	{
+		len++;
+	}
 
-	len = strlen(s1);
-
-	for (k = 0; s2[k] && k < n; k++)
+	for (k = 0; s2[k] != '\0' && k < n; k++)
 	{
 		len_2++;
 	}
