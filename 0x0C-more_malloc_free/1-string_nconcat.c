@@ -13,19 +13,24 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *str;
 	/*char *new_loc;*/
-	unsigned int i = 0, j = 0, len_2, len;
+	unsigned int i, j, len_2 = 0, len = 0;
+
 
 	len = strlen(s1);
 
-	for (j = 0; s2[j] != '\0' && j < n; j++)
+	for (j = 0; s2[j] && j < n; j++)
 	{
-		len_2 = strlen(s2) - n;
+		len_2++;
 	}
 	if (s1 == NULL)
+	{
 		s1 = "";
+	}
 
 	if (s2 == NULL)
+	{
 		s2 = "";
+	}
 
 	str = (char *) malloc(sizeof(char) * (len + len_2  + 1));
 
