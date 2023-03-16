@@ -15,6 +15,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	int len = strlen(s1);
 	unsigned int len_2 = strlen(s2);
 	char *new_loc;
+	unsigned int i = 0, j = 0;
 
 	if (s1 == NULL)
 		s1 = "";
@@ -30,24 +31,22 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	new_loc = str;
 	if (n >= len_2)
-		while (*s2)
+		while (s2[i] != '\0')
 		{
-			*new_loc = *s2;
-			new_loc++;
-			s2++;
+			new_loc[i] = s2[i];
+			i++;
 		}
 
-	while (*s1)
+	while (s1[i] != '\0')
 	{
-		*new_loc = *s1;
-		new_loc++;
-		s1++;
+		new_loc[i] = s1[i];
+		i++;
 	}
-	while (*s2 && n--)
+	while (j < n)
 	{
-		*new_loc = *s2;
-		new_loc++;
-		s2++;
+		new_loc[i] = s2[j];
+		i++;
+		j++;
 	}
 	new_loc = '\0';
 	return (str);
