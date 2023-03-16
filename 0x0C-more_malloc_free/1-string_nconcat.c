@@ -18,13 +18,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	if (s1 == NULL)
 		s1 = "";
-
 	if (s2 == NULL)
 		s2 = "";
-
 	if (n < len_2)
 		str = (char *) malloc(sizeof(char) * (len + n + 1));
-
 	else
 		str = (char *) malloc(sizeof(char) * (len + len_2 + 1));
 
@@ -32,6 +29,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 
 	new_loc = str;
+	if (n >= len_2)
+		while (*s2)
+		{
+			*new_loc = *s2;
+			new_loc++;
+			s2++;
+		}
 
 	while (*s1)
 	{
