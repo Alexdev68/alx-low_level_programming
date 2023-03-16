@@ -12,45 +12,38 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *str;
-	char *new_loc;
+	/*char *new_loc;*/
 	unsigned int i = 0, j = 0, len_2, len;
 
 	len = strlen(s1);
-	len_2 = strlen(s2);
+
+	for (j = 0; s2[j] != '\0' && j < n; j++)
+	{
+		len_2 = strlen(s2) - n;
+	}
 	if (s1 == NULL)
 		s1 = "";
 
 	if (s2 == NULL)
 		s2 = "";
 
-	if (n < len_2)
-		str = (char *) malloc(sizeof(char) * (len + n + 1));
+	str = (char *) malloc(sizeof(char) * (len + len_2  + 1));
 
-	else if (n >= len_2)
-		str = (char *) malloc(sizeof(char) * (len + len_2 + 1));
-
-	if (str == NULL)
-		return (NULL);
-
-	new_loc = str;
-	if (n >= len_2)
+	/*if (n >= len_2)
 		while (s2[i] != '\0')
 		{
 			new_loc[i] = s2[i];
 			i++;
-		}
+		}*/
 
-	while (s1[i] != '\0')
+	for (i = 0; i < len; i++)
 	{
-		new_loc[i] = s1[i];
-		i++;
+		str[i] = s1[i];
 	}
-	while (j < n)
+	for (j = 0; j < len_2; j++)
 	{
-		new_loc[i] = s2[j];
-		i++;
-		j++;
+		str[i + j] = s2[j];
 	}
-	new_loc = '\0';
+	str[i + j] = '\0';
 	return (str);
 }
