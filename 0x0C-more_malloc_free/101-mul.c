@@ -11,8 +11,8 @@ int _isdigit(char *s);
  */
 int main(int argc, char *argv[])
 {
-	int i;
-	unsigned int num1, num2, mul;
+	int num1, num2, mul, len, i;
+	char *prod;
 
 	if (argc != 3)
 	{
@@ -33,6 +33,25 @@ int main(int argc, char *argv[])
 	num2 = atoi(argv[2]);
 	mul = num1 * num2;
 	printf("%u\n", mul);
+
+	for (i = 0; mul++; i++)
+	{
+		len++;
+	}
+
+	prod = (char *) malloc(sizeof(int) * len + 1);
+
+	if (prod == NULL)
+	{
+		exit(98);
+	}
+
+	for (i = 0; i < len; i++)
+	{
+		prod[i] = mul++;
+	}
+
+	free(prod);
 
 	return (0);
 }
