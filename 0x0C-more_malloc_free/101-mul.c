@@ -11,7 +11,7 @@ int _isdigit(char *s);
  */
 int main(int argc, char *argv[])
 {
-	unsigned int num1, num2, mul;
+	unsigned long int num1, num2, mul;
 	int i;
 
 	if (argc != 3)
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[2]);
 	mul = num1 * num2;
-	printf("%u\n", mul);
+	printf("%lu\n", mul);
 
 	return (0);
 }
