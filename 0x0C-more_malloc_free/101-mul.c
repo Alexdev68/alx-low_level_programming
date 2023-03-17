@@ -37,6 +37,11 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
+/**
+ * _isdigit - This functions checks if a character is a digit
+ * @s: This is the string to be checked
+ * Return: This returns 1 if is digit or 0 if not
+ */
 int _isdigit(char *s)
 {
 	while (*s != '\0')
