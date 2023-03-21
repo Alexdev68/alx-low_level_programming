@@ -47,7 +47,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 		mem2[i] = owner[i];
 	}
 	mem2[i] = '\0';
-
 	nd->name = mem1;
 	nd->age = age;
 	nd->owner = mem2;
