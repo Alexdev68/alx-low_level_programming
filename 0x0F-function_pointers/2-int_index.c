@@ -25,6 +25,11 @@ int int_index(int *array, int size, int (*cmp)(int))
 		{
 			return (i);
 		}
+
+		if (*cmp == 0)
+		{
+			return(-1);
+		}
 	}
 
 	return (0);
