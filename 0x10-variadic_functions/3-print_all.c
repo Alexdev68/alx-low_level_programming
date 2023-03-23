@@ -11,13 +11,18 @@
  */
 void print_all(const char * const format, ...)
 {
-	int i = 0;
+	int i = 0, n;
 	char *g, *separator = ", ";
 	va_list args;
 
+	if (format != NULL)
+	{
+		n = strlen(format);
+	}
+
 	va_start(args, format);
 
-	while (format && format[i])
+	while (i < n)
 	{
 		switch (format[i])
 		{
@@ -42,7 +47,7 @@ void print_all(const char * const format, ...)
 				i++;
 				continue;
 		}
-		printf("%s", (format[i + 1]) ? separator : "");
+		printf("%s", (i < (n - 1)) ? separator : "");
 		i++;
 	}
 	putchar ('\n');
