@@ -17,11 +17,9 @@ void print_all(const char * const format, ...)
 
 	va_start(args, format);
 
-	printf("%s", (format == NULL) ? "" : "");
-
 	while (i < n)
 	{
-		if (format[i])
+		if (format && format[i])
 		{
 			switch (format[i])
 			{
