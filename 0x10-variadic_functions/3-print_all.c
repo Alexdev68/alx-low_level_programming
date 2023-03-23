@@ -41,9 +41,9 @@ void print_all(const char * const format, ...)
 					printf("%s", g);
 					break;
 				default:
-					i++;
 					continue;
 			}
+			i++;
 		}
 		printf("%s", (i < (n - 1)) ? separator : "");
 		i++;
