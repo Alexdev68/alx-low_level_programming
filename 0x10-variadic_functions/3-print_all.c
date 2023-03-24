@@ -19,7 +19,6 @@ void print_all(const char * const format, ...)
 	{
 		n = strlen(format);
 	}
-
 	va_start(args, format);
 
 	while (i < n)
@@ -51,6 +50,5 @@ void print_all(const char * const format, ...)
 		i++;
 	}
 	putchar ('\n');
-
 	va_end(args);
 }
