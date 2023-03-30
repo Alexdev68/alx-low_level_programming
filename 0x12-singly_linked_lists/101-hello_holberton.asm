@@ -1,5 +1,5 @@
-	section .text
-	global main, _start
+
+	global main
 	extern printf
 main:
 	mov  edi, fmt
