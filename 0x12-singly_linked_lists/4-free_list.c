@@ -8,12 +8,12 @@
  */
 void free_list(list_t *head)
 {
-	struct list_s *temp;
+	struct list_s *x;
 
 	while (head != NULL)
 	{
-		temp = head;
+		x = head;
 		head = head->next;
-		free(temp);
+		free(x);
 	}
 }
