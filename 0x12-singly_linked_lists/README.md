@@ -1,5 +1,5 @@
 # Singly linked lists
-This readme file is for my prject on singly linked lists
+This readme file is for my project on singly linked lists.
 
 # Tasks
 0. Print list
