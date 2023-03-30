@@ -1,6 +1,6 @@
 	SECTION .text
 	extern printf
-	global main, _start
+	global main
 main:
 	mov edi, fmt	;
 	xor eax, eax	;
