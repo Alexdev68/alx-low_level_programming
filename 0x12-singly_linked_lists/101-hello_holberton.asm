@@ -4,7 +4,6 @@
 main:
 	mov edi, fmt	;
 	xor eax, eax	;
-	mov eax, 0	;
 	call printf
 	mov ebx, 0	;
 	ret
