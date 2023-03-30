@@ -7,4 +7,4 @@ main:
 	call printf
 	mov ebx, 0	;
 	ret
-format: db `Hello, Holberton\n`, 0
+fmt: db `Hello, Holberton\n`,0
