@@ -14,7 +14,7 @@ void free_listint2(listint_t **head)
 	{
 		return;
 	}
-	if (head == NULL)
+	if (x == NULL)
 	{
 		return;
 	}
