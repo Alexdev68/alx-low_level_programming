@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t loopnodecounter(const listint_t *head);
+size_t loopdetector(const listint_t *head);
 
 /**
  * print_listint_safe - This function prints a listint_t linked list
@@ -11,7 +11,7 @@ size_t loopnodecounter(const listint_t *head);
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t i, count = loopnodecounter(head);
+	size_t i, count = loopdetector(head);
 	const listint_t *x = head;
 
 	if (count == 0)
