@@ -26,8 +26,8 @@ size_t free_listint_safe(listint_t **h)
 	{
 		for (i = 0; i < count; i++)
 		{
-			free(x);
 			j = x->next;
+			free(x);
 			x = j;
 		}
 	}
