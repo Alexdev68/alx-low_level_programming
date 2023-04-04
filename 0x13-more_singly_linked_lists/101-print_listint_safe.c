@@ -35,7 +35,12 @@ size_t print_listint_safe(const listint_t *head)
 	return (count);
 }
 
-size_t loopnodecounter(const listint_t *head)
+/**
+ * loopdetector - This function checks if a linked list has a loop in it
+ * @head: This is the const linked list head ref
+ * Return: This return 0
+ */
+size_t loopdetector(const listint_t *head)
 {
 	const listint_t *fast = head;
 	const listint_t *slow = head;
