@@ -10,7 +10,6 @@ listint_t *find_listint_loop(listint_t *head)
 {
 	size_t i, count = loopdetector(head);
 	listint_t *x = head;
-	listint_t *j;
 
 	if (count == 0)
 	{
@@ -22,7 +21,7 @@ listint_t *find_listint_loop(listint_t *head)
 		{
 			x = x->next;
 		}
-		j = x;
+
 	}
-	return (j);
+	return (x);
 }
