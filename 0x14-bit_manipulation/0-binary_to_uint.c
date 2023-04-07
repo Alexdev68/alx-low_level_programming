@@ -27,13 +27,14 @@ unsigned int binary_to_uint(const char *b)
 		}
 		if (b[i] == '1')
 		{
-			if (tot > (UINT_MAX - calc) / 2)
-			{
-				return (0);
-			}
 			tot += calc;
 		}
 		calc *= 2;
 	}
+	if (tot > (UINT_MAX - calc) / 2)
+	{
+		return (0);
+	}
+
 	return (tot);
 }
