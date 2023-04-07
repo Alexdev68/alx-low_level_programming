@@ -14,7 +14,7 @@ unsigned int binary_to_uint(const char *b)
 
 	len = strlen(b);
 
-	if (b == NULL || len == 0)
+	if (b == NULL)
 	{
 		return (0);
 	}
@@ -31,10 +31,5 @@ unsigned int binary_to_uint(const char *b)
 		}
 		calc *= 2;
 	}
-	if (tot > (UINT_MAX - calc) / 2)
-	{
-		return (0);
-	}
-
 	return (tot);
 }
