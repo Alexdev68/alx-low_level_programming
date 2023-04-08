@@ -13,6 +13,11 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	return (countflipped(n ^ m));
 }
 
+/**
+ * countflipped - This function counts the number of bits flipped
+ * @n: This is the number that is to be checked
+ * Return: This returns the count
+ */
 int countflipped(unsigned long int n)
 {
 	int count = 0;
