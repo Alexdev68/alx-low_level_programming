@@ -1,5 +1,7 @@
 #include "main.h"
 
+int countflipped(unsigned long int n);
+
 /**
  * flip_bits - This function returns the number of bits flipped
  * @n: This is the first number
@@ -8,5 +10,17 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	return (__builtin_popcount(n ^ m));
+	return (countflipped(n ^ m));
+}
+
+int countflipped(unsigned long int n)
+{
+	int count = 0;
+
+	while (n != 0)
+	{
+		n &= (n - 1);
+		count++;
+	}
+	return (count);
 }
