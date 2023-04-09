@@ -47,6 +47,8 @@ size_t read_textfile(const char *filename, size_t letters)
 	{
 		if (write(1, &c[i], 1) == -1)
 		{
+			close(fd);
+			free(c);
 			return (0);
 		}
 	}
