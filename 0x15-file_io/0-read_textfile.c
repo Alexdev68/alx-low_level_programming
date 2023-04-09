@@ -1,7 +1,8 @@
 #include "main.h"
-#include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 
 /**
  * read_textfile - This function reads a text file and prints
@@ -12,8 +13,9 @@
  */
 size_t read_textfile(const char *filename, size_t letters)
 {
-	int fd, no_ch, i;
-	char c[800];
+	unsigned int no_ch, count = 0;
+	int fd;
+	char *c;
 
 	if (filename == NULL)
 	{
@@ -23,17 +25,32 @@ size_t read_textfile(const char *filename, size_t letters)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
+		close(fd);
+		return (0);
+	}
+
+	c = malloc(letters + 1);
+	if (c == NULL)
+	{
+		close(fd);
 		return (0);
 	}
 
 	no_ch = read(fd, c, letters);
 	c[no_ch] = '\0';
 
-	for (i = 0; c[i] != '\0'; i++)
+	while (count < no_ch)
 	{
-		_putchar(c[i]);
+		if (_putchar(c[count]) == EOF)
+		{
+			close(fd);
+			free(c);
+			return (0);
+		}
+		count++;
 	}
 	close(fd);
+	free(c);
 
 	return (no_ch);
 }
