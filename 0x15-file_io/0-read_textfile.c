@@ -20,6 +20,10 @@ size_t read_textfile(const char *filename, size_t letters)
 	}
 
 	fptr = fopen(filename, "r");
+	if (fptr == NULL)
+	{
+		return (0);
+	}
 	
 	while ((holder = getc(fptr)) != EOF)
 	{
