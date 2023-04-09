@@ -11,7 +11,7 @@
 size_t read_textfile(const char *filename, size_t letters)
 {
 	FILE *fptr;
-	char holder;
+	int holder;
 	size_t count = 0;
 
 	if (filename == NULL)
@@ -33,10 +33,6 @@ size_t read_textfile(const char *filename, size_t letters)
 		}
 		putc(holder, stdout);
 		count++;
-	}
-	if (count > letters)
-	{
-		return (0);
 	}
 
 	fclose(fptr);
