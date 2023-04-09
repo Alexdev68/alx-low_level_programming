@@ -12,7 +12,7 @@
  */
 size_t read_textfile(const char *filename, size_t letters)
 {
-	int fd, no_ch;
+	int fd, no_ch, i;
 	char c[800];
 
 	if (filename == NULL)
@@ -29,7 +29,10 @@ size_t read_textfile(const char *filename, size_t letters)
 	no_ch = read(fd, c, letters);
 	c[no_ch] = '\0';
 
-	printf("%s", c);
+	for (i = 0; c[i] != '\0'; i++)
+	{
+		_putchar(c[i]);
+	}
 
 	return (no_ch);
 }
