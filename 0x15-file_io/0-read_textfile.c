@@ -24,7 +24,7 @@ size_t read_textfile(const char *filename, size_t letters)
 	{
 		return (0);
 	}
-	
+
 	while ((holder = getc(fptr)) != EOF)
 	{
 		if (count == letters)
