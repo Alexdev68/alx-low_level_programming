@@ -20,8 +20,7 @@ size_t read_textfile(const char *filename, size_t letters)
 	{
 		return (0);
 	}
-
-	fd = open(filename, O_RDONLY);
+	fd = open(filename, O_RDWR);
 	if (fd < 0)
 	{
 		return (0);
@@ -33,7 +32,6 @@ size_t read_textfile(const char *filename, size_t letters)
 		close(fd);
 		return (0);
 	}
-
 	no_ch = read(fd, c, letters);
 	if (no_ch < 0)
 	{
@@ -42,7 +40,6 @@ size_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	c[no_ch] = '\0';
-
 	for (i = 0; i < no_ch; i++)
 	{
 		if (write(1, &c[i], 1) == -1)
