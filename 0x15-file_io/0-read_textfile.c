@@ -11,7 +11,7 @@
  * @letters: This is the number of characters to be read and printed out
  * Return: This returns the actual number of letters it could read and print
  */
-size_t read_textfile(const char *filename, size_t letters)
+ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd, no_ch, i;
 	char *c;
