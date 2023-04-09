@@ -1,5 +1,7 @@
 #include "main.h"
 #include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 /**
  * read_textfile - This function reads a text file and prints
@@ -10,36 +12,24 @@
  */
 size_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *fptr;
-	int holder;
-	size_t count = 0;
+	int fd, no_ch;
+	char c[800];
 
 	if (filename == NULL)
 	{
 		return (0);
 	}
 
-	fptr = fopen(filename, "r");
-	if (fptr == NULL)
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
 	{
 		return (0);
 	}
 
-	while ((holder = getc(fptr)) != EOF)
-	{
-		if (count == letters)
-		{
-			break;
-		}
-		if (putc(holder, stdout) == EOF)
-		{
-			fclose(fptr);
-			return (0);
-		}
-		count++;
-	}
+	no_ch = read(fd, c, letters);
+	c[no_ch] = '\0';
 
-	fclose(fptr);
+	printf("%s", c);
 
-	return (count);
+	return (no_ch);
 }
