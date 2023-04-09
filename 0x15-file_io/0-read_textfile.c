@@ -31,12 +31,12 @@ size_t read_textfile(const char *filename, size_t letters)
 		{
 			break;
 		}
-		putc(holder, stdout);
+		if (putc(holder, stdout) == EOF)
+		{
+			fclose(fptr);
+			return (0);
+		}
 		count++;
-	}
-	if (holder == 0)
-	{
-		return (0);
 	}
 
 	fclose(fptr);
