@@ -13,7 +13,7 @@
  */
 size_t read_textfile(const char *filename, size_t letters)
 {
-	int fd, no_ch, count = 0;
+	int fd, no_ch, i;
 	char *c;
 
 	if (filename == NULL)
@@ -43,15 +43,9 @@ size_t read_textfile(const char *filename, size_t letters)
 	}
 	c[no_ch] = '\0';
 
-	while (count < no_ch)
+	for (i = 0; i < no_ch; i++)
 	{
-		if (_putchar(c[count]) == EOF)
-		{
-			close(fd);
-			free(c);
-			return (0);
-		}
-		count++;
+		_putchar(c[i]);
 	}
 	close(fd);
 	free(c);
