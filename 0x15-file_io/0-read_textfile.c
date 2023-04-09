@@ -13,8 +13,7 @@
  */
 size_t read_textfile(const char *filename, size_t letters)
 {
-	unsigned int no_ch, count = 0;
-	int fd;
+	int fd, no_ch, count = 0;
 	char *c;
 
 	if (filename == NULL)
@@ -25,7 +24,6 @@ size_t read_textfile(const char *filename, size_t letters)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		close(fd);
 		return (0);
 	}
 
@@ -37,6 +35,12 @@ size_t read_textfile(const char *filename, size_t letters)
 	}
 
 	no_ch = read(fd, c, letters);
+	if (no_ch < 0)
+	{
+		close(fd);
+		free(c);
+		return (0);
+	}
 	c[no_ch] = '\0';
 
 	while (count < no_ch)
