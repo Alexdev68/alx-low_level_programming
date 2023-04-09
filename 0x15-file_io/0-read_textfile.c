@@ -45,7 +45,10 @@ size_t read_textfile(const char *filename, size_t letters)
 
 	for (i = 0; i < no_ch; i++)
 	{
-		_putchar(c[i]);
+		if (write(1, &c[i], 1) == -1)
+		{
+			return (0);
+		}
 	}
 	close(fd);
 	free(c);
