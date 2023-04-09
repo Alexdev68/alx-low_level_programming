@@ -33,6 +33,7 @@ size_t read_textfile(const char *filename, size_t letters)
 	{
 		_putchar(c[i]);
 	}
+	close(fd);
 
 	return (no_ch);
 }
