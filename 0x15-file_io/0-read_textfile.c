@@ -20,13 +20,13 @@ size_t read_textfile(const char *filename, size_t letters)
 	{
 		return (0);
 	}
-	fd = open(filename, O_RDWR);
+	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
 		return (0);
 	}
 
-	c = malloc(letters + 1);
+	c = malloc(letters);
 	if (c == NULL)
 	{
 		close(fd);
@@ -39,15 +39,11 @@ size_t read_textfile(const char *filename, size_t letters)
 		free(c);
 		return (0);
 	}
-	c[no_ch] = '\0';
-	for (i = 0; i < no_ch; i++)
+	i = write(STDOUT_FILENO, c, no_ch);
+	if (i == -1 || no_ch == -1 || i != no_ch)
 	{
-		if (write(1, &c[i], 1) == -1)
-		{
-			close(fd);
-			free(c);
-			return (0);
-		}
+		free(c);
+		return (0);
 	}
 	close(fd);
 	free(c);
