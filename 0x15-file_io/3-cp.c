@@ -32,7 +32,7 @@ int main(int ac, char **av)
  */
 int cpy_to_another(const char *file_from, const char *file_to)
 {
-	int feed, fid, i, no_ch;
+	int feed, fid, i, no_ch = 0;
 	char buffer[1024];
 
 	feed = open(file_from, O_RDONLY);
@@ -50,7 +50,17 @@ int cpy_to_another(const char *file_from, const char *file_to)
 		exit(99);
 	}
 
-	no_ch = read(feed, buffer, 1024);
+	while ((no_ch = read(feed, buffer, 1024)) > 0)
+	{
+		i = write(fid, buffer, no_ch);
+		if (i == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+			close(feed);
+			close(fid);
+			exit(99);
+		}
+	}
 	if (no_ch == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file ");
@@ -58,14 +68,6 @@ int cpy_to_another(const char *file_from, const char *file_to)
 		close(feed);
 		close(fid);
 		exit(98);
-	}
-	i = write(fid, buffer, no_ch);
-	if (i == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-		close(feed);
-		close(fid);
-		exit(99);
 	}
 	if (close(feed) == -1)
 	{
