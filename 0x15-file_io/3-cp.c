@@ -43,6 +43,12 @@ int cpy_to_another(const char *file_from, const char *file_to)
 		dprintf(STDERR_FILENO, "%s\n", file_from);
 		exit(98);
 	}
+	if (fid < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		close(feed);
+		exit(99);
+	}
 
 	no_ch = read(feed, buffer, 1024);
 	if (no_ch == -1)
@@ -54,7 +60,7 @@ int cpy_to_another(const char *file_from, const char *file_to)
 		exit(98);
 	}
 	i = write(fid, buffer, no_ch);
-	if (fid < 0 || i == -1)
+	if (i == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		close(feed);
