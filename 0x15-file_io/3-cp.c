@@ -40,24 +40,35 @@ int cpy_to_another(const char *file_from, const char *file_to)
 	if (feed < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file ");
-		dprintf(STDERR_FILENO, "NAME_OF_THE_FILE\n");
+		dprintf(STDERR_FILENO, "%s\n", file_from);
 		exit(98);
 	}
 
 	no_ch = read(feed, buffer, 1024);
+	if (no_ch == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file ");
+		dprintf(STDERR_FILENO, "%s\n", file_from);
+		close(feed);
+		close(fid);
+		exit(98);
+	}
 	i = write(fid, buffer, no_ch);
 	if (fid < 0 || i == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to ");
-		dprintf(STDERR_FILENO, "NAME_OF_THE_FILE\n");
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+		close(feed);
+		close(fid);
 		exit(99);
 	}
-	close(feed);
-	close(fid);
-
-	if (!close(feed) || !close(fid))
+	if (close(feed) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE\n");
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", feed);
+		exit(100);
+	}
+	if (close(fid) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fid);
 		exit(100);
 	}
 	return (0);
