@@ -8,8 +8,8 @@ void display_header(Elf64_Ehdr *eh);
 
 /**
  * main - Entry point
- * @ac - This is the argument count
- * @av - This is the argument vector
+ * @ac: This is the argument count
+ * @av: This is the argument vector
  * Return: This returns 0 on success
  */
 int main(int ac, char **av)
@@ -51,6 +51,11 @@ int main(int ac, char **av)
 	return (0);
 }
 
+/**
+ * display_header - This function displays the information contained
+ * in the ELF header at the start of an ELF file
+ * @eh: This is the pointer to the elf header
+ */
 void display_header(Elf64_Ehdr *eh)
 {
 	int i;
@@ -67,8 +72,8 @@ void display_header(Elf64_Ehdr *eh)
 	printf("  Class:                             ");
 	printf("%s\n", eh->e_ident[EI_CLASS] == ELFCLASS64 ? "ELF64" : "ELF32");
 	printf("  Data:                              ");
-	printf("%s\n", eh->e_ident[EI_DATA] == ELFDATA2LSB ? 
-			"2's complement, little endian" : 
+	printf("%s\n", eh->e_ident[EI_DATA] == ELFDATA2LSB ?
+			"2's complement, little endian" :
 			"2's complement, big endian");
 	printf("  Version:                           ");
 	printf("%d (current)\n", eh->e_ident[EI_VERSION]);
@@ -104,5 +109,5 @@ void display_header(Elf64_Ehdr *eh)
 			break;
 	}
 	printf("  Entry point address:               ");
-	printf("0x%lx\n", eh->e_entry);
+	printf("%#x\n", (unsigned int)eh->e_entry);
 }
