@@ -114,9 +114,11 @@ void display_header(Elf64_Ehdr *eh)
 		printf("  Entry point address:               ");
 		printf("%#x\n", (unsigned int)eh->e_entry);
 	}
-	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
+	else if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
 	{
 		printf("  Entry point address:               ");
 		printf("%#x\n", (unsigned int)be64toh(eh->e_entry));
 	}
+	else
+		printf("Unknown\n");
 }
