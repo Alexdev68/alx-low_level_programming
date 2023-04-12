@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "main.h"
+#include <arpa/inet.h>
 
 void display_header(Elf64_Ehdr *eh);
 
@@ -108,6 +109,14 @@ void display_header(Elf64_Ehdr *eh)
 			printf("Unknown\n");
 			break;
 	}
-	printf("  Entry point address:               ");
-	printf("%#x\n", (unsigned int)eh->e_entry);
+	if (eh->e_ident[EI_DATA] == ELFDATA2LSB)
+	{
+		printf("  Entry point address:               ");
+		printf("%#x\n", (unsigned int)eh->e_entry);
+	}
+	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		printf("  Entry point address:               ");
+		printf("%#x\n", (unsigned int)be64toh(eh->e_entry));
+	}
 }
