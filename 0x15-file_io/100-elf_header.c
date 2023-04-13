@@ -91,7 +91,7 @@ void display_header(Elf64_Ehdr *eh)
 			printf("UNIX - Solaris\n");
 			break;
 		default:
-			printf("<unknown: 53>\n");
+			printf("<unknown: %x>\n", eh->e_ident[EI_OSABI]);
 			break;
 	}
 	printf("  ABI Version:                       ");
