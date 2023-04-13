@@ -116,7 +116,7 @@ void display_header(Elf64_Ehdr *eh)
 	}
 	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
 	{
-		eh->type >>= 8;
+		eh->e_type >>= 8;
 	}
 	printf("  Entry point address:               ");
 	printf("%#x\n", (unsigned int)eh->e_entry);
