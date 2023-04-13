@@ -62,11 +62,11 @@ void display_header(Elf64_Ehdr *eh)
 	int i;
 
 	printf("ELF Header:\n");
-	printf("  Magic:   ");
+	printf("  Magic:  ");
 
 	for (i = 0; i < EI_NIDENT; i++)
 	{
-		printf("%02x ", eh->e_ident[i]);
+		printf(" %02x", eh->e_ident[i]);
 	}
 	putchar('\n');
 
