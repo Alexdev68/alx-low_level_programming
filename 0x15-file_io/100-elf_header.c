@@ -118,9 +118,14 @@ void display_header(Elf64_Ehdr *eh)
 	{
 		eh->e_type >>= 8;
 	}
-	printf("  Entry point address:               ");
-	printf("%#x\n", (unsigned int)eh->e_entry);
-	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
+	if (eh->e_ident[EI_DATA] == ELFDATA2LSB && eh->e_ident[EI_CLASS] ==
+			ELFCLASS64)
+	{
+		printf("  Entry point address:               ");
+		printf("%#x\n", (unsigned int)eh->e_entry);
+	}
+	if (eh->e_ident[EI_DATA] == ELFDATA2MSB && eh->e_ident[EI_CLASS] ==
+			ELFCLASS64)
 	{
 		printf("  Entry point address:               ");
 		printf("%#x\n", (unsigned int)be64toh(eh->e_entry));
@@ -130,5 +135,11 @@ void display_header(Elf64_Ehdr *eh)
 	{
 		printf("  Entry point address:               ");
 		printf("%#x\n", (unsigned int)be32toh(eh->e_entry));
+	}
+	if (eh->e_ident[EI_CLASS] == ELFCLASS32 && eh->e_ident[EI_DATA] ==
+			ELFDATA2LSB)
+	{
+		printf("  Entry point address:               ");
+		printf("%#x\n", (unsigned int)eh->e_entry);
 	}
 }
