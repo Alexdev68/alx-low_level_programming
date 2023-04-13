@@ -96,12 +96,16 @@ void display_header(Elf64_Ehdr *eh)
 			printf("UNIX - Solaris\n");
 			break;
 		default:
-			printf("<unknown: %d>\n", eh->e_ident[EI_OSABI]);
+			printf("<unknown: %x>\n", eh->e_ident[EI_OSABI]);
 			break;
 	}
 	printf("  ABI Version:                       ");
 	printf("%d\n", eh->e_ident[EI_ABIVERSION]);
 	printf("  Type:                              ");
+	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		eh->e_type >>= 8;
+	}
 	switch (eh->e_type)
 	{
 		case ET_EXEC:
@@ -113,10 +117,6 @@ void display_header(Elf64_Ehdr *eh)
 		default:
 			printf("Unknown\n");
 			break;
-	}
-	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
-	{
-		eh->e_type >>= 8;
 	}
 	if (eh->e_ident[EI_DATA] == ELFDATA2LSB && eh->e_ident[EI_CLASS] ==
 			ELFCLASS64)
