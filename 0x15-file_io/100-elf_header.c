@@ -76,10 +76,6 @@ void display_header(Elf64_Ehdr *eh)
 	printf("%s\n", eh->e_ident[EI_DATA] == ELFDATA2LSB ?
 			"2's complement, little endian" :
 			"2's complement, big endian");
-	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
-	{
-		e_type >>= 8;
-	}
 	printf("  Version:                           ");
 	printf("%d", eh->e_ident[EI_VERSION]);
 	if (eh->e_ident[EI_VERSION] == EV_CURRENT)
@@ -106,6 +102,10 @@ void display_header(Elf64_Ehdr *eh)
 	printf("  ABI Version:                       ");
 	printf("%d\n", eh->e_ident[EI_ABIVERSION]);
 	printf("  Type:                              ");
+	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		eh->e_type >>= 8;
+	}
 	switch (eh->e_type)
 	{
 		case ET_EXEC:
