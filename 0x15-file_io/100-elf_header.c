@@ -77,7 +77,12 @@ void display_header(Elf64_Ehdr *eh)
 			"2's complement, little endian" :
 			"2's complement, big endian");
 	printf("  Version:                           ");
-	printf("%d (current)\n", eh->e_ident[EI_VERSION]);
+	printf("%d", eh->e_ident[EI_VERSION]);
+	if (eh->e_ident[EI_VERSION] == EV_CURRENT)
+	{
+		printf(" (current)");
+	}
+	putchar('\n');
 	printf("  OS/ABI:                            ");
 	switch (eh->e_ident[EI_OSABI])
 	{
