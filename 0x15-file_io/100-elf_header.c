@@ -102,10 +102,6 @@ void display_header(Elf64_Ehdr *eh)
 	printf("  ABI Version:                       ");
 	printf("%d\n", eh->e_ident[EI_ABIVERSION]);
 	printf("  Type:                              ");
-	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
-	{
-		eh->e_type >>= 8;
-	}
 	switch (eh->e_type)
 	{
 		case ET_EXEC:
@@ -117,6 +113,10 @@ void display_header(Elf64_Ehdr *eh)
 		default:
 			printf("Unknown\n");
 			break;
+	}
+	if (eh->e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		eh->type >>= 8;
 	}
 	printf("  Entry point address:               ");
 	printf("%#x\n", (unsigned int)eh->e_entry);
