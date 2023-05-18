@@ -2,10 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+/**
+ * *add_dnodeint - This function add a node to the beginning of a linked list
+ * @head: This is a pointer to the head of the liked list
+ * @n: This is the value to but added at the beginning
+ * Return: This returns the address of the new element, or NULL if it failed
+ */
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	dlistint_t *current = *head;
 	dlistint_t *new;
 
 	new = malloc(sizeof(dlistint_t));
@@ -15,14 +19,14 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	}
 
 	new->n = n;
-	new->next = current;
+	new->next = (*head);
 	new->prev = NULL;
 
-	if (current != NULL)
+	if ((*head) != NULL)
 	{
-		current->prev = new;
+		(*head)->prev = new;
 	}
-	current = new;
+	(*head) = new;
 
 	return (new);
 }
