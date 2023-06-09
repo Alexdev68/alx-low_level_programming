@@ -12,7 +12,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	unsigned long int index;
 	hash_node_t *pair;
 
-	if (ht == NULL || key == NULL || strcmp(key, "") == 0)
+	if (ht == NULL || key == NULL)
 	{
 		return (NULL);
 	}
@@ -21,12 +21,13 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	pair = ht->array[index];
 
-	if (pair != NULL)
+	while (pair != NULL)
 	{
 		if (strcmp(pair->key, key) == 0)
 		{
 			return (pair->value);
 		}
+		pair = pair->next;
 	}
 	return (NULL);
 }
