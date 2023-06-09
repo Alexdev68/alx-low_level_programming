@@ -37,6 +37,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		current = new;
 	}
+	else
+	{
+		new->next = current;
+		current = new;
+	}
 
 	while (current != NULL)
 	{
