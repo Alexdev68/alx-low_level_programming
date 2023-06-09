@@ -23,7 +23,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (key == NULL || ht == NULL || strcmp(key, "") == 0 || value == NULL)
 		return (0);
 
-	new->key = (char *)key;
+	new->key = malloc(strlen(key) + 1);
+	strcpy(new->key, key);
 	new->value = strdup(value);
 	new->next = NULL;
 	index = key_index((const unsigned char *)key, 1024);
@@ -32,6 +33,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (strcmp(ht->array[index]->key, key) == 0)
 		{
+			free(new->key);
+			free(new->value);
+			free(new);
 			free(ht->array[index]->value);
 			ht->array[index]->value = strdup(value);
 			return (1);
@@ -41,11 +45,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (ht->array[index] == NULL)
 	{
-		ht->array[index] = new;
-	}
-	else
-	{
-		new->next = ht->array[index];
 		ht->array[index] = new;
 	}
 
