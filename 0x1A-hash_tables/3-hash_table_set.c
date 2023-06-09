@@ -12,7 +12,6 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *new;
-	hash_node_t *current;
 	int index;
 
 	new = malloc(sizeof(hash_node_t));
@@ -31,11 +30,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	index = key_index((const unsigned char *)key, 1024);
 
-	current = ht->array[index];
-
-	if (current == NULL)
+	if (ht->array[index] == NULL)
 	{
-		current = new;
+		ht->array[index] = new;
 	}
 	else
 	{
