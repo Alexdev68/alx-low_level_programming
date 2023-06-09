@@ -22,18 +22,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	new->key = malloc(strlen(key));
-	if (new->key == NULL)
+/*	if (new->key == NULL)
 	{
 		free(new);
 		return (0);
-	}
+	}*/
 	strcpy(new->key, key);
 	new->value = strdup(value);
-	if (new->value == NULL)
+/*	if (new->value == NULL)
 	{
 		free(new);
 		return (0);
-	}
+	}*/
 	new->next = NULL;
 	index = key_index((const unsigned char *)key, ht->size);
 	current = ht->array[index];
