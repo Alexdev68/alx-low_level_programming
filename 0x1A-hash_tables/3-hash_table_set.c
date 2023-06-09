@@ -30,15 +30,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	index = key_index((const unsigned char *)key, 1024);
 
-	if (ht->array[index] == NULL)
-	{
-		ht->array[index] = new;
-	}
-	else
-	{
-		new->next = ht->array[index];
-		ht->array[index] = new;
-	}
+	new->next = ht->array[index];
+	ht->array[index] = new;
 
 	return (1);
 }
