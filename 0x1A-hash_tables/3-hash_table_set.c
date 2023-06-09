@@ -39,17 +39,16 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		new->next = current;
-		current = new;
-	}
-
-	while (current != NULL)
-	{
 		if (strcmp(current->key, key) == 0)
 		{
-			current->value = strdup(value);
+			strcpy(current->value, value);
+			return (1);
 		}
-		current = current->next;
+		else
+		{
+			new->next = current;
+			current = new;
+		}
 	}
 
 	return (1);
