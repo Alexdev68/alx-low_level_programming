@@ -28,7 +28,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new->key = strdup(key);
 	new->value = strdup(value);
 
-	index = hash_djb2((const unsigned char *)key);
+	index = key_index((const unsigned char *)key, 1024);
 
 	if (ht->array[index] == NULL)
 	{
