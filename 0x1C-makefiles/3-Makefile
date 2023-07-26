@@ -14,6 +14,7 @@ oclean:
 	$(RM) -f $(OBJ)
 
 fclean:
-	$(RM) -f *~ *.o school
+	$(RM) -f *~ school
+	$(RM) -f $(OBJ)
 
 re: oclean all
