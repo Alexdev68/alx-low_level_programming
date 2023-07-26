@@ -17,3 +17,9 @@ fclean: clean oclean
 re: oclean all
 
 .PHONY: all clean oclean fclean re
+
+main.o: main.c m.h
+	$(CC) $(CFLAGS) -c main.c -o main.o
+
+schoool: school.c m.h
+	$(CC) $(CFLAGS) -c school.c -o school.o
