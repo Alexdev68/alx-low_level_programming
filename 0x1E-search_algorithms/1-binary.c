@@ -1,25 +1,27 @@
 #include "search_algos.h"
 #include <stdio.h>
 
+/**
+ * binary_search - This function implements the binary search algorithm
+ * @array: This  is a pointer to the first element of the array to search in
+ * @size: This is the number of elements in array
+ * @value: This is the value to search for
+ * Return: This returns -1 if the array is NULL or the value is not found
+ */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t left = 0;
-	size_t right = size - 1;
-	size_t i;
+	size_t left = 0, right = size - 1, i;
 
 	if (array == NULL)
-	{
 		return (-1);
-	}
 
 	printf("Searching in array: ");
-
 	for (i = 0; i < size; i++)
 	{
 		printf("%d", array[i]);
 
 		if (i != size - 1)
-                        printf(", ");
+			printf(", ");
 	}
 	putchar('\n');
 
@@ -38,13 +40,13 @@ int binary_search(int *array, size_t size, int value)
 
 		printf("Searching in array: ");
 
-                for (i = left; i <= right; i++)
-                {
-                        printf("%d", array[i]);
+		for (i = left; i <= right; i++)
+		{
+			printf("%d", array[i]);
 
-                        if (i != right)
-                                printf(", ");
-                }
+			if (i != right)
+				printf(", ");
+		}
 		putchar('\n');
 	}
 	return (-1);
