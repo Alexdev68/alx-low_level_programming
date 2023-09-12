@@ -21,7 +21,7 @@ int jump_search(int *array, size_t size, int value)
 		return (-1);
 	}
 
-	while (array[sq] < value && sq < size)
+	while (sq < size && array[sq] < value)
 	{
 		printf("Value checked array[%ld] = [%d]\n", sq, array[sq]);
 		i = sq;
