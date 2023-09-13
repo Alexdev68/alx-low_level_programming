@@ -48,14 +48,15 @@ int advanced(int *array, size_t right, size_t left, int value)
 		}
 		printf("\n");
 
-		if (array[mid] == value)
-			if (mid == left || array[mid - 1] != value)
-				return (mid);
-
 		if (array[mid] < value)
 			return (advanced(array, right, mid + 1, value));
-		else
-			return (advanced(array, mid - 1, left, value));
+		else if (array[mid] > value || 
+				(array[mid] == value && array[mid - 1] == value))
+			return (advanced(array, mid, left, value));
+		else if (array[mid] == value)
+		{
+			return (mid);
+		}
 	}
 
 	return (-1);
