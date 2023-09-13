@@ -50,7 +50,7 @@ int advanced(int *array, size_t right, size_t left, int value)
 
 		if (array[mid] < value)
 			return (advanced(array, right, mid + 1, value));
-		else if (array[mid] > value || 
+		else if (array[mid] > value ||
 				(array[mid] == value && array[mid - 1] == value))
 			return (advanced(array, mid, left, value));
 		else if (array[mid] == value)
