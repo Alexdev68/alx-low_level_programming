@@ -49,7 +49,7 @@ int advanced(int *array, size_t right, size_t left, int value)
 		printf("\n");
 
 		if (array[mid] == value)
-			if (mid == left)
+			if (mid == left || array[mid - 1] != value)
 				return (mid);
 
 		if (array[mid] < value)
